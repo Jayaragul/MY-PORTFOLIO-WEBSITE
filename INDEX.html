@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaya Ragul N - Personal Webpage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes skillBar {
+            from { width: 0; }
+            to { width: var(--width); }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #main-header {
+            background: #1f1f1f;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+            text-align: center;
+        }
+
+        #main-header h1 {
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 2.4em;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        #main-header h1:hover {
+            color: #0779e4;
+        }
+
+        #main-content {
+            padding: 20px;
+            background: #1e1e1e;
+            margin-top: 20px;
+            border: #333 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #main-content img {
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        #main-content img:hover {
+            transform: scale(1.1);
+        }
+
+        #main-content h2 {
+            color: #0779e4;
+            border-bottom: 2px solid #0779e4;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .skills {
+            margin: 20px 0;
+        }
+
+        .skills .skill {
+            margin: 15px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skills .skill:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .skills .skill-title {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #50c8ff;
+            transition: color 0.3s ease;
+        }
+
+        .skills .skill-title:hover {
+            color: #0779e4;
+        }
+
+        .progress {
+            height: 25px;
+            background: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .progress:hover {
+            background: #444;
+        }
+
+        .progress-bar {
+            background: #0779e4;
+            width: 0;
+            transition: width 2s ease, background 0.3s ease;
+            text-align: center;
+            line-height: 25px;
+            color: #fff;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            animation: skillBar 2s forwards;
+        }
+
+        .progress-bar:hover {
+            background: #50c8ff;
+        }
+
+        footer {
+            background: #1f1f1f;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-top: #0779e4 3px solid;
+        }
+
+        a {
+            color: #0779e4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #50c8ff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #333;
+            margin: 5px 0;
+            padding: 10px;
+            border: #444 1px solid;
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        ul li:hover {
+            background: #444;
+            transform: translateX(10px);
+        }
+
+        ul li a {
+            display: block;
+        }
+
+        .bgimage {
+            height: 100vh;
+            background: url('HH.jpg') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero_title {
+            font-size: 4.5rem;
+            color: #ffffff;
+        }
+
+        .hero_desc {
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .typewriter h2 {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid #0779e4;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #0779e4; }
+        }
+
+        .projects a {
+            display: block;
+            background: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .projects a:hover {
+            background: #444;
+            transform: translateY(-5px);
+        }
+
+        .code-snippet {
+            background: #1f1f1f;
+            border: #333 1px solid;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            padding: 10px;
+            background: #121212;
+            border-radius: 8px;
+            overflow: auto;
+        }
+
+        .code-snippet pre code {
+            color: #50c8ff;
+        }
+
+        .chart-container {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            height: 200px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form {
+            background: #1e1e1e;
+            padding: 20px;
+            border: #333 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-form h2 {
+            color: #0779e4;
+        }
+
+        .contact-form .form-control {
+            border: 1px solid #333;
+            background: #1e1e1e;
+            color: #ffffff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: #0779e4;
+            box-shadow: 0 0 5px rgba(0, 119, 228, 0.5);
+        }
+
+        .contact-form .btn-primary {
+            background: #0779e4;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form .btn-primary:hover {
+            background: #50c8ff;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <nav>
+        <div class="container">
+            <div class="row">
+                <ul>
+                    <!-- Removed Home and Portfolio links -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main banner -->
+    <section class="bgimage" id="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text typewriter">
+                    <h2 class="hero_title">Hi, it's me Jaya Ragul N</h2>
+                    <p class="hero_desc">I am a professional engineer passionate about learning and technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="main-content">
+        <img src="profile-pic (1).png" alt="Jaya Ragul N">
+        <h2 id="about">About Me</h2>
+        <p>I am Jaya Ragul, an engineer interested in tech and passionate about learning new technologies and applying them to solve real-life problems with optimum solutions. (Lifelong Learner 📚)</p>
+        <p>Currently pursuing B.Tech in AI & DS at Sri Shakthi Institute of Engineering and Technology.</p>
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <p class="skill-title">Python</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="--width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <p class="skill-title">Machine Learning</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="--width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <p class="skill-title">WEB DEVELOPMENT</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="--width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Projects</h2>
+        <div class="projects">
+            <a href="#project1">OPEN CV PROJECTS</a>
+            <a href="#project2">NLP</a>
+        </div>
+
+        <div class="code-snippet">
+            <h2>Code</h2>
+            <pre><code>
+import matplotlib.pyplot as plt
+
+# Sample data
+months = ['January', 'February', 'March', 'April', 'May', 'June']
+values = [10, 20, 15, 30, 25, 40]
+
+# Create a line chart
+plt.figure(figsize=(10, 5))
+plt.plot(months, values, marker='o', color='#50c8ff', linestyle='-', linewidth=2, markersize=8)
+plt.fill_between(months, values, color='rgba(80, 200, 255, 0.2)')
+plt.title('Monthly Data')
+plt.xlabel('Month')
+plt.ylabel('Values')
+plt.grid(True)
+plt.savefig('line_chart.png')
+plt.show()
+
+            </code></pre>
+            <!-- Embedded Line Chart in the code box -->
+            <div class="chart-container">
+                <h2>CODE OUT PUT</h2>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Contact Me</h2>
+            <form action="#" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Jaya Ragul N. All rights reserved.</p>
+        <a href="https://www.linkedin.com/in/jayaragul-n/" target="_blank">LinkedIn</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Dataset',
+                    data: [10, 20, 15, 30, 25, 40],
+                    borderColor: '#50c8ff',
+                    backgroundColor: 'rgba(80, 200, 255, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + ' units';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

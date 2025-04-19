@@ -1,473 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaya Ragul N - Personal Webpage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    <link rel="stylesheet" href="jj.css">
+  <!-- Basic SEO -->
+<meta name="description" content="Jayaragul N – AI/ML Engineer | Full Stack Developer | Data Science Enthusiast. Explore my portfolio of projects and professional journey.">
+<meta name="keywords" content="Jayaragul N, AI Engineer, Machine Learning, Data Science, Full Stack Developer, Python Developer, Portfolio, Web Development">
+<meta name="author" content="Jayaragul N">
 
-        @keyframes skillBar {
-            from { width: 0; }
-            to { width: var(--width); }
-        }
+<!-- Open Graph for Social Previews -->
+<meta property="og:title" content="Jayaragul N – AI/ML Engineer | Portfolio">
+<meta property="og:description" content="Discover the work and projects of Jayaragul N in AI, data science, and full stack web development.">
+<meta property="og:image" content="https://yourdomain.com/og-image.png"> <!-- Replace with your image URL -->
+<meta property="og:url" content="https://suryakumar-p.vercel.app"> <!-- Replace with your actual domain -->
+<meta property="og:type" content="website">
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #ffffff;
-            animation: fadeIn 1s ease-in-out;
-        }
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jayaragul N – AI/ML Engineer | Portfolio">
+<meta name="twitter:description" content="Portfolio of Jayaragul N, an AI/ML engineer and full stack developer.">
+<meta name="twitter:image" content="data:image/jpeg;base64,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"> <!-- Replace with your image URL -->
+<meta name="twitter:site" content="@jayaragul_N"> <!-- Replace with actual handle -->
+<meta name="twitter:creator" content="@jayaragul_N">
 
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        #main-header {
-            background: #1f1f1f;
-            color: #ffffff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #0779e4 3px solid;
-            text-align: center;
-        }
-
-        #main-header h1 {
-            text-transform: uppercase;
-            margin: 0;
-            font-size: 2.4em;
-            font-style: italic;
-            transition: color 0.3s ease;
-        }
-
-        #main-header h1:hover {
-            color: #0779e4;
-        }
-
-        #main-content {
-            padding: 20px;
-            background: #1e1e1e;
-            margin-top: 20px;
-            border: #333 1px solid;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        #main-content img {
-            float: left;
-            margin-right: 20px;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        #main-content img:hover {
-            transform: scale(1.1);
-        }
-
-        #main-content h2 {
-            color: #0779e4;
-            border-bottom: 2px solid #0779e4;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .skills {
-            margin: 20px 0;
-        }
-
-        .skills .skill {
-            margin: 15px 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skills .skill:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-        }
-
-        .skills .skill-title {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #50c8ff;
-            transition: color 0.3s ease;
-        }
-
-        .skills .skill-title:hover {
-            color: #0779e4;
-        }
-
-        .progress {
-            height: 25px;
-            background: #333;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-            transition: background 0.3s ease;
-            position: relative;
-            margin-top: 5px;
-        }
-
-        .progress:hover {
-            background: #444;
-        }
-
-        .progress-bar {
-            background: #0779e4;
-            width: 0;
-            transition: width 2s ease, background 0.3s ease;
-            text-align: center;
-            line-height: 25px;
-            color: #fff;
-            font-weight: bold;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            animation: skillBar 2s forwards;
-        }
-
-        .progress-bar:hover {
-            background: #50c8ff;
-        }
-
-        footer {
-            background: #1f1f1f;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-            border-top: #0779e4 3px solid;
-        }
-
-        a {
-            color: #0779e4;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #50c8ff;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            background: #333;
-            margin: 5px 0;
-            padding: 10px;
-            border: #444 1px solid;
-            border-radius: 8px;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        ul li:hover {
-            background: #444;
-            transform: translateX(10px);
-        }
-
-        ul li a {
-            display: block;
-        }
-
-        .bgimage {
-            height: 100vh;
-            background: url('HH.jpg') no-repeat center center/cover;
-            position: relative;
-        }
-
-        .hero_title {
-            font-size: 4.5rem;
-            color: #ffffff;
-        }
-
-        .hero_desc {
-            font-size: 2rem;
-            color: #ffffff;
-        }
-
-        .hero-text {
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .typewriter h2 {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: .15em solid #0779e4;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #0779e4; }
-        }
-
-        .projects a {
-            display: block;
-            background: #333;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .projects a:hover {
-            background: #444;
-            transform: translateY(-5px);
-        }
-
-        .code-snippet {
-            background: #1f1f1f;
-            border: #333 1px solid;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .code-snippet pre {
-            margin: 0;
-            padding: 10px;
-            background: #121212;
-            border-radius: 8px;
-            overflow: auto;
-        }
-
-        .code-snippet pre code {
-            color: #50c8ff;
-        }
-
-        .chart-container {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 300px;
-            height: 200px;
-            background: #1e1e1e;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .contact-form {
-            background: #1e1e1e;
-            padding: 20px;
-            border: #333 1px solid;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin-top: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-form:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-        }
-
-        .contact-form h2 {
-            color: #0779e4;
-        }
-
-        .contact-form .form-control {
-            border: 1px solid #333;
-            background: #1e1e1e;
-            color: #ffffff;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-form .form-control:focus {
-            border-color: #0779e4;
-            box-shadow: 0 0 5px rgba(0, 119, 228, 0.5);
-        }
-
-        .contact-form .btn-primary {
-            background: #0779e4;
-            border: none;
-            transition: background 0.3s ease;
-        }
-
-        .contact-form .btn-primary:hover {
-            background: #50c8ff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaya Ragul | Portfolio</title>
+  <link rel="stylesheet" href=".css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    
 
-    <nav>
-        <div class="container">
-            <div class="row">
-                <ul>
-                    <!-- Removed Home and Portfolio links -->
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+  <!-- Toggle Dark Mode -->
+  <div class="fixed top-4 right-4 z-50">
+    <button id="toggleDarkMode" class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow">
+      <i data-lucide="moon" class="text-black dark:text-white w-6 h-6"></i>
+    </button>
+  </div>
 
-    <!-- main banner -->
-    <section class="bgimage" id="home">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text typewriter">
-                    <h2 class="hero_title">Hi, it's me Jaya Ragul N</h2>
-                    <p class="hero_desc">I am a professional engineer passionate about learning and technology.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-overlay">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Hi, I'm <span class="text-pink-400" id="typed-name"></span></h1>
+      <p class="text-lg text-white">AI & DS Student at Sri Shakthi Institute of Engineering and Technology</p>
+    </div>
+  </header>
 
-    <div class="container" id="main-content">
-        <img src="profile-pic (1).png" alt="Jaya Ragul N">
-        <h2 id="about">About Me</h2>
-        <p>I am Jaya Ragul, an engineer interested in tech and passionate about learning new technologies and applying them to solve real-life problems with optimum solutions. (Lifelong Learner 📚)</p>
-        <p>Currently pursuing B.Tech in AI & DS at Sri Shakthi Institute of Engineering and Technology.</p>
-        <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill">
-                <p class="skill-title">Python</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="--width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                </div>
-            </div>
-            <div class="skill">
-                <p class="skill-title">Machine Learning</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="--width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                </div>
-            </div>
-            <div class="skill">
-                <p class="skill-title">WEB DEVELOPMENT</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="--width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                </div>
-            </div>
-        </div>
+  <!-- About -->
+  <section class="container-section">
+    <h2 class="section-title">About Me</h2>
+    <p class="text-lg text-center">I'm Jaya Ragul, a passionate developer and engineer who loves to build smart and impactful solutions using AI, Machine Learning, and Full Stack technologies.</p>
+  </section>
 
-        <h2>Projects</h2>
-        <div class="projects">
-            <a href="#project1">OPEN CV PROJECTS</a>
-            <a href="#project2">NLP</a>
-        </div>
+  <!-- Stats -->
+ <section class="px-6 py-16 bg-white dark:bg-gray-900" id="stats">
+  <h2 class="text-3xl font-bold text-center mb-12">By the Numbers</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
 
-        <div class="code-snippet">
-            <h2>Code</h2>
-            <pre><code>
-import matplotlib.pyplot as plt
-
-# Sample data
-months = ['January', 'February', 'March', 'April', 'May', 'June']
-values = [10, 20, 15, 30, 25, 40]
-
-# Create a line chart
-plt.figure(figsize=(10, 5))
-plt.plot(months, values, marker='o', color='#50c8ff', linestyle='-', linewidth=2, markersize=8)
-plt.fill_between(months, values, color='rgba(80, 200, 255, 0.2)')
-plt.title('Monthly Data')
-plt.xlabel('Month')
-plt.ylabel('Values')
-plt.grid(True)
-plt.savefig('line_chart.png')
-plt.show()
-
-            </code></pre>
-            <!-- Embedded Line Chart in the code box -->
-            <div class="chart-container">
-                <h2>CODE OUT PUT</h2>
-                <canvas id="lineChart"></canvas>
-            </div>
-        </div>
-
-        <div class="contact-form">
-            <h2>Contact Me</h2>
-            <form action="#" method="post">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
+    <!-- Models -->
+    <div class="relative bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition group">
+      <i data-lucide="brain-circuit" class="w-8 h-8 text-pink-500 mx-auto mb-3"></i>
+      <p class="text-3xl font-bold count-up" data-count="2">0</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300">ML Models Deployed</p>
+      <div class="absolute top-2 right-2 bg-pink-100 text-pink-600 text-xs px-2 py-1 rounded-full hidden group-hover:block">Production Ready</div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Jaya Ragul N. All rights reserved.</p>
-        <a href="https://www.linkedin.com/in/jayaragul-n/" target="_blank">LinkedIn</a>
-    </footer>
+    <!-- LOC -->
+    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <i data-lucide="file-code" class="w-8 h-8 text-pink-500 mx-auto mb-3"></i>
+      <p class="text-3xl font-bold count-up" data-count="20000">0</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300">Lines of Code</p>
+      <div class="w-full h-2 mt-4 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div class="h-full bg-pink-500 w-[90%] animate-pulse"></div>
+      </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('lineChart').getContext('2d');
-        const lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                datasets: [{
-                    label: 'Dataset',
-                    data: [10, 20, 15, 30, 25, 40],
-                    borderColor: '#50c8ff',
-                    backgroundColor: 'rgba(80, 200, 255, 0.2)',
-                    borderWidth: 2,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y + ' units';
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    <!-- Competitions -->
+    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <i data-lucide="trophy" class="w-8 h-8 text-pink-500 mx-auto mb-3"></i>
+      <p class="text-3xl font-bold count-up" data-count="2">0</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300">Competitions Won</p>
+      <p class="text-xs mt-2 text-gray-400 dark:text-gray-400">(Paper Presentation + Ideathon)</p>
+    </div>
+
+    <!-- Accuracy -->
+    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <i data-lucide="bar-chart-2" class="w-8 h-8 text-pink-500 mx-auto mb-3"></i>
+      <p class="text-3xl font-bold count-up" data-count="98">0%</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300">Best Model Accuracy</p>
+      <div class="w-full h-2 mt-4 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div class="h-full bg-green-400 w-[98%] animate-[pulse_2s_infinite]"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+ <!-- Skills -->
+<section class="bg-gray-100 dark:bg-gray-800 px-6 py-16">
+  <h2 class="text-3xl font-bold text-center mb-12">⚙️ Tech Skills</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
+
+    <!-- Skill Item -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">VS Code</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Google Colab" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Google Colab</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Jupyter</span>
+    </div>
+
+    <!-- Languages -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Python</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">JavaScript</span>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">TensorFlow</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">PyTorch</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Flask</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Django</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">FastAPI</span>
+    </div>
+
+    <!-- Cloud/DevOps -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Google Cloud</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Docker</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Linux</span>
+    </div>
+
+    <!-- Version Control -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">Git</span>
+    </div>
+
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">GitHub</span>
+    </div>
+
+    <!-- Databases -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">MongoDB</span>
+    </div>
+
+    <!-- Robotics -->
+    <div class="flex flex-col items-center group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg" alt="ROS" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+      <span class="mt-2 text-sm">ROS</span>
+    </div>
+
+  </div>
+</section>
+
+
+ 
+
+ <!-- Projects -->
+<section class="container-section max-w-6xl">
+  <h2 class="section-title">Machine Learning Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?camera,face" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Attendance Management System</h3>
+        <p class="project-desc">Designed and implemented a camera-based system to automate attendance using face recognition.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?radar,drone" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Micro-Doppler Classification</h3>
+        <p class="project-desc">Classified drones and birds using machine learning on radar-based micro-Doppler signatures.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?xray,health" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Pneumonia Classification</h3>
+        <p class="project-desc">Used OpenCV and ML algorithms to classify X-ray images for pneumonia detection.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?nlp,healthcare" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Medical NLP System</h3>
+        <p class="project-desc">Developed a Natural Language Processing model to suggest diseases based on user-inputted symptoms.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title mt-12">Full Stack Projects</h2>
+  <div class="project-grid md:grid-cols-2">
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?web" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Medical management system</h3>
+        <p class="project-desc">medical management system for doctors</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?website" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Tech Millars Website</h3>
+        <p class="project-desc">An interactive web portal for showcasing student tech initiatives and hackathons.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title mt-12">IoT Projects</h2>
+  <div class="project-grid md:grid-cols-1">
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?robot,hand" class="project-img" />
+      <div class="p-4">
+        <h3 class="project-title">Robotic Hand</h3>
+        <p class="project-desc">Built an IoT-based robotic hand that moves in real-time, enabling gesture-based interaction and control.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-10">
+    <a href="https://github.com/jayaragul" target="_blank" class="bg-pink-500 text-white px-6 py-2 rounded hover:bg-pink-600 transition">See More Projects on GitHub</a>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>Connect with me:</p>
+    <div class="flex justify-center space-x-6 mt-2">
+      <a href="https://www.linkedin.com/in/jayaragul-n/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="w-6 h-6" />
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="w-6 h-6" />
+      </a>
+    </div>
+    <p class="mt-4 text-sm">© 2025 Jaya Ragul. All rights reserved.</p>
+  </footer>
+
+  <script src="nwe.js"></script>
 </body>
+
 </html>

@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="jj.css">
   <!-- Basic SEO -->
@@ -35,26 +37,29 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
-  <!-- Toggle Dark Mode -->
-  <div class="fixed top-4 right-4 z-50">
-    <button id="toggleDarkMode" class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow">
-      <i data-lucide="moon" class="text-black dark:text-white w-6 h-6"></i>
-    </button>
-  </div>
+
 
   <!-- Hero Section -->
   <header class="hero-section">
     <div class="hero-overlay">
       <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Hi, I'm <span class="text-pink-400" id="typed-name"></span></h1>
-      <p class="text-lg text-white">AI & DS Student at Sri Shakthi Institute of Engineering and Technology</p>
+      <p class="text-lg text-white">"All models are wrong, but some are useful"</p>
     </div>
   </header>
 
-  <!-- About -->
-  <section class="container-section">
-    <h2 class="section-title">About Me</h2>
-    <p class="text-lg text-center">I'm Jaya Ragul, a passionate developer and engineer who loves to build smart and impactful solutions using AI, Machine Learning, and Full Stack technologies.</p>
+ <!-- About -->
+<section class="container-section flex flex-col items-center text-center py-8">
+    <h2 class="section-title text-3xl font-semibold mb-4">About Me</h2>
+    <div class="flex flex-col items-center space-y-4 md:flex-row md:space-x-8">
+      <!-- Your Photo -->
+      <img src="" alt="Jaya Ragul" class="w-32 h-32 rounded-full shadow-lg object-cover">
+      <!-- About Text -->
+      <p class="text-lg max-w-md">
+        I'm Jaya Ragul, a passionate developer and engineer who loves to build smart and impactful solutions using AI, Machine Learning, and Full Stack technologies.
+      </p>
+    </div>
   </section>
+  
 
   <!-- Stats -->
  <section class="px-6 py-16 bg-white dark:bg-gray-900" id="stats">
@@ -99,6 +104,11 @@
 
   </div>
 </section>
+<a href="Copy of Jayaragul resume (1).pdf" download=jayaragul_resume.pdf" class="fixed bottom-6 right-6 z-50">
+    <button class="bg-green-500 text-white py-3 px-6 rounded-full shadow-lg hover:bg-green-600 focus:outline-none transform hover:scale-105 transition duration-300">
+        Download My Resume
+    </button>
+</a>
 
 
  <!-- Skills -->
@@ -108,9 +118,24 @@
 
     <!-- Skill Item -->
     <div class="flex flex-col items-center group">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
-      <span class="mt-2 text-sm">VS Code</span>
-    </div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+        <span class="mt-2 text-sm">VS Code</span>
+      </div>
+      
+      <!-- Hugging Face Icon -->
+      <div class="flex flex-col items-center group">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/huggingface-color.png" alt="Hugging Face" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+        <span class="mt-2 text-sm">Hugging Face</span>
+      </div>
+      
+      
+      
+      <!-- Firebase Icon -->
+      <div class="flex flex-col items-center group">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
+        <span class="mt-2 text-sm">Firebase</span>
+      </div>
+      
 
     <div class="flex flex-col items-center group">
       <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Google Colab" class="w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
@@ -205,69 +230,77 @@
  
 
  <!-- Projects -->
-<section class="container-section max-w-6xl">
-    <h2 class="section-title">Machine Learning Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="attendence.jpeg" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Attendance Management System</h3>
-          <p class="project-desc">Designed and implemented a camera-based system to automate attendance using face recognition.</p>
+ <section class="container-section max-w-6xl">
+    <h2 class="section-title" style="font-size: 2rem; font-weight: 700; text-align: center; margin: 2rem 0;">
+      Machine Learning Projects
+    </h2>
+    <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="attendence.jpeg" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Attendance Management System</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">Designed and implemented a camera-based system to automate attendance using face recognition.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="drone.jpg" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Micro-Doppler Classification</h3>
-          <p class="project-desc">Classified drones and birds using machine learning on radar-based micro-Doppler signatures.</p>
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="drone.jpg" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Micro-Doppler Classification</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">Classified drones and birds using machine learning on radar-based micro-Doppler signatures.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="pnumonia.jpeg" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Pneumonia Classification</h3>
-          <p class="project-desc">Used OpenCV and ML algorithms to classify X-ray images for pneumonia detection.</p>
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="pnumonia.jpeg" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Pneumonia Classification</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">Used OpenCV and ML algorithms to classify X-ray images for pneumonia detection.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="nlp.png" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Medical NLP System</h3>
-          <p class="project-desc">Developed a Natural Language Processing model to suggest diseases based on user-inputted symptoms.</p>
-        </div>
-      </div>
-    </div>
-  
-    <h2 class="section-title mt-12">Full Stack Projects</h2>
-    <div class="project-grid md:grid-cols-2">
-      <div class="project-card">
-        <img src="med.png" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Medical management system</h3>
-          <p class="project-desc">Medical management system for doctors.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://source.unsplash.com/400x300/?website" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Tech Millars Website</h3>
-          <p class="project-desc">An interactive web portal for showcasing student tech initiatives and hackathons.</p>
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="nlp.png" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Medical NLP System</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">Developed a Natural Language Processing model to suggest diseases based on user-inputted symptoms.</p>
         </div>
       </div>
     </div>
   
-    <h2 class="section-title mt-12">IoT Projects</h2>
-    <div class="project-grid md:grid-cols-1">
-      <div class="project-card">
-        <img src="robotic.png" class="project-img" />
-        <div class="p-4">
-          <h3 class="project-title">Robotic Hand</h3>
-          <p class="project-desc">Built an IoT-based robotic hand that moves in real-time, enabling gesture-based interaction and control.</p>
+    <h2 class="section-title mt-12" style="font-size: 2rem; font-weight: 700; text-align: center; margin: 3rem 0 2rem;">
+      Full Stack Projects
+    </h2>
+    <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="med.png" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Medical Management System</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">Medical management system for doctors.</p>
+        </div>
+      </div>
+      <div class="project-card" style="background-color: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <img src="https://source.unsplash.com/400x300/?website" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 1rem;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600;">Tech Millars Website</h3>
+          <p class="project-desc" style="font-size: 0.9rem; color: #4b5563;">An interactive web portal for showcasing student tech initiatives and hackathons.</p>
+        </div>
+      </div>
+    </div>
+  
+    <h2 class="section-title mt-12" style="font-size: 2rem; font-weight: 700; text-align: center; margin: 3rem 0 2rem;">
+      IoT Projects
+    </h2>
+    <div class="project-grid" style="display: grid; place-items: center;">
+      <div class="project-card" style="background-color: #f9fafb; color: #1f2937; border: 2px solid #e5e7eb; border-radius: 1rem; overflow: hidden; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); width: 320px; height: 320px; display: flex; flex-direction: column;">
+        <img src="robotic.png" class="project-img" style="width: 100%; height: 160px; object-fit: cover;" />
+        <div class="p-4" style="padding: 0.75rem; display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
+          <h3 class="project-title" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem;">Robotic Hand</h3>
+          <p class="project-desc" style="font-size: 0.85rem; color: #4b5563;">Leveraging React, Django, and ROS, this IoT-powered robotic hand integrates real-time gesture control and a digital twin for seamless interaction.</p>
         </div>
       </div>
     </div>
   </section>
   
+      
+      
 
   <div class="text-center mt-10">
     <a href="https://github.com/jayaragul" target="_blank" class="bg-pink-500 text-white px-6 py-2 rounded hover:bg-pink-600 transition">See More Projects on GitHub</a>
@@ -275,18 +308,19 @@
 </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center">
-    <p>Connect with me:</p>
+<footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-6 text-center">
+    <p class="text-lg font-semibold">Connect with me:</p>
     <div class="flex justify-center space-x-6 mt-2">
-      <a href="https://www.linkedin.com/in/jayaragul-n/" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="w-6 h-6" />
+      <a href="https://www.linkedin.com/in/jayaragul-n/" target="_blank" class="hover:scale-110 transition-transform duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="w-8 h-8 hover:opacity-80" />
       </a>
-      <a href="https://www.instagram.com/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="w-6 h-6" />
+      <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform duration-300">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="w-8 h-8 hover:opacity-80" />
       </a>
     </div>
-    <p class="mt-4 text-sm">© 2025 Jaya Ragul. All rights reserved.</p>
+    <p class="mt-4 text-sm opacity-75">© 2025 Jaya Ragul. All rights reserved.</p>
   </footer>
+  
 
   <script src="nwe.js"></script>
 </body>

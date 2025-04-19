@@ -1,9 +1,8 @@
-// Toggle dark mode
+// Toggle Dark Mode
 const toggleBtn = document.getElementById("toggleDarkMode");
 toggleBtn.addEventListener("click", () => {
   document.documentElement.classList.toggle("dark");
 });
-
 // Typed effect for name
 const typedName = document.getElementById("typed-name");
 const fullName = "Jaya Ragul";

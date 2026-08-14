@@ -470,19 +470,56 @@ section{padding:6.5rem 0;position:relative}
   border-left:2px solid var(--accent);margin-bottom:2.6rem;
 }
 @media(max-width:600px){.award-lead{grid-template-columns:1fr;padding:1.5rem}}
-.award-lead .yr{font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.14em;padding-top:.35rem}
+.award-lead .yr{
+  display:block;font-family:var(--mono);font-size:.7rem;color:var(--accent);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:.55rem;
+}
 .award-lead h3{font-size:clamp(1.3rem,2.8vw,1.75rem);margin-bottom:.7rem}
 .award-lead p{color:var(--muted);margin:0}
 .award-lead p strong{color:var(--text);font-weight:500}
 
+/* animated winner seal */
+.seal{color:var(--accent);width:112px;flex-shrink:0}
+.seal svg{width:100%;height:auto;display:block}
+.seal .ring{transform-origin:60px 60px;animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal .halo{opacity:.5;transform-origin:60px 60px;animation:halo 3.6s ease-out infinite}
+@keyframes halo{
+  0%{transform:scale(1);opacity:.5}
+  70%{transform:scale(1.32);opacity:0}
+  100%{transform:scale(1.32);opacity:0}
+}
+.seal-1{font-family:var(--serif);font-size:26px;font-weight:700;fill:currentColor}
+.seal-2{font-family:var(--mono);font-size:9px;letter-spacing:.22em;fill:currentColor;opacity:.75}
+@media(max-width:600px){.seal{width:88px}}
+
 .award-list{list-style:none;padding:0;margin:0}
 .award-list li{
   display:grid;grid-template-columns:5.5rem 1fr;gap:1.4rem;
-  padding:1.25rem 0;border-top:1px solid var(--rule);align-items:baseline;
+  padding:1.25rem 0 1.25rem 0;border-top:1px solid var(--rule);align-items:baseline;
+  position:relative;
+  transition:padding-left .4s cubic-bezier(.2,.7,.3,1);
 }
+/* accent bar that grows from the left on hover */
+.award-list li::before{
+  content:'';position:absolute;left:0;top:-1px;bottom:0;width:2px;
+  background:var(--accent);transform:scaleY(0);transform-origin:top;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1);
+}
+.award-list li:hover::before{transform:scaleY(1)}
+.award-list li:hover{padding-left:1rem}
+.award-list li:hover h4{color:var(--accent)}
 .award-list li:last-child{border-bottom:1px solid var(--rule)}
 @media(max-width:600px){.award-list li{grid-template-columns:1fr;gap:.3rem}}
-.award-list .place{font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em}
+.award-list .place{
+  font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em;
+}
+.award-list h4{transition:color .3s ease}
+/* stagger the entrance */
+.award-list li.reveal{transition-delay:0s}
+.award-list li:nth-child(2).reveal{transition-delay:.09s}
+.award-list li:nth-child(3).reveal{transition-delay:.18s}
+.award-list li:nth-child(4).reveal{transition-delay:.27s}
 .award-list h4{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:.25rem}
 .award-list p{font-size:.9rem;color:var(--muted);margin:0}
 
@@ -912,8 +949,22 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
   </div>
 
   <div class="award-lead reveal">
-    <span class="yr">2026</span>
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <!-- slow-rotating outer ring -->
+        <g class="ring">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor"
+                  stroke-width="1" stroke-dasharray="4 7" opacity=".55"/>
+        </g>
+        <circle cx="60" cy="60" r="41" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"/>
+        <!-- pulsing halo -->
+        <circle class="halo" cx="60" cy="60" r="41" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="60" y="54" text-anchor="middle" class="seal-1">01</text>
+        <text x="60" y="76" text-anchor="middle" class="seal-2">WINNER</text>
+      </svg>
+    </div>
     <div>
+      <span class="yr">2026 · GDG Coimbatore</span>
       <h3>Winner — Tech for Good: Build with AI</h3>
       <p>
         Won <strong>Best Use of AI for Zero Hunger &amp; Economic Growth</strong> at the Tech for
@@ -923,46 +974,32 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     </div>
   </div>
 
-  <ul class="award-list reveal">
-    <li>
+  <ul class="award-list">
+    <li class="reveal">
       <span class="place">Top 5</span>
       <div>
         <h4>GenAI Hackathon — ML.CBE 2025</h4>
         <p>Selected among the top 5 teams from 70+ registered, for a FinTech intelligence solution built with AI and ML.</p>
       </div>
     </li>
-    <li>
+    <li class="reveal">
       <span class="place">1st place</span>
       <div>
         <h4>Paper Presentation — RVS College of Engineering &amp; Technology</h4>
         <p>An AI-based healthcare project. 2025.</p>
       </div>
     </li>
-    <li>
+    <li class="reveal">
       <span class="place">1st place</span>
       <div>
         <h4>Paper Presentation — P.A. College of Engineering &amp; Technology</h4>
         <p>Machine learning and medical algorithms. 2024.</p>
       </div>
     </li>
-    <li>
+    <li class="reveal">
       <span class="place">1st place</span>
       <div>
         <h4>Idethon at Varnam — Karpagam College of Engineering &amp; Technology</h4>
-        <p>2025.</p>
-      </div>
-    </li>
-    <li>
-      <span class="place">2nd place</span>
-      <div>
-        <h4>Treasure Hunt — RVS College of Engineering &amp; Technology</h4>
-        <p>2025.</p>
-      </div>
-    </li>
-    <li>
-      <span class="place">3rd place</span>
-      <div>
-        <h4>Prompt Generation — RVS College of Engineering &amp; Technology</h4>
         <p>2025.</p>
       </div>
     </li>

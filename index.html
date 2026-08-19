@@ -184,8 +184,7 @@ p{margin:0 0 1.1em}
 header.nav{
   position:fixed;inset:0 0 auto 0;z-index:100;
   padding:1.1rem 0;
-  background:color-mix(in srgb,var(--ink) 86%,transparent);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:var(--ink);
   border-bottom:1px solid transparent;transition:border-color .3s ease,transform .3s ease;
 }
 header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
@@ -194,15 +193,16 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 .brand em{font-style:italic;color:var(--accent)}
 .nav-links{display:flex;gap:1.9rem;align-items:center}
 .nav-links a{
-  text-decoration:none;font-size:.86rem;color:var(--muted);
+  text-decoration:none;font-size:.86rem;color:var(--text);opacity:.78;
   transition:color .25s ease;position:relative;padding:.2rem 0;
 }
 .nav-links a::after{
-  content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;
-  background:var(--accent);transition:width .3s ease;
+  content:'';position:absolute;left:0;bottom:-2px;height:1px;width:100%;
+  background:var(--accent);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .3s ease;
 }
-.nav-links a:hover,.nav-links a.active{color:var(--text)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover,.nav-links a.active{color:var(--text);opacity:1}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 .nav-actions{display:flex;gap:.6rem;align-items:center}
 .icon-btn{
   background:none;border:1px solid var(--rule);color:var(--muted);
@@ -303,7 +303,7 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 .portrait-meta{
   display:flex;justify-content:space-between;gap:1rem;
   font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;
-  color:var(--muted);opacity:.7;margin-top:.7rem;text-transform:uppercase;
+  color:var(--muted);margin-top:.7rem;text-transform:uppercase;
 }
 .portrait-meta .live{color:var(--accent);display:inline-flex;align-items:center;gap:.35rem}
 .portrait-meta .live::before{
@@ -338,7 +338,7 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 .affil{margin-top:1.9rem;display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.5rem}
 .affil-label{
   font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;
-  color:var(--muted);opacity:.8;
+  color:var(--muted);
 }
 .affil-row{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem}
 .affil-row span{
@@ -449,7 +449,7 @@ section{padding:6.5rem 0;position:relative}
   color:var(--accent);display:block;margin-bottom:.9rem;
 }
 .work-body h3{font-size:clamp(1.4rem,2.6vw,1.85rem);margin-bottom:.85rem}
-.work-body p{color:var(--muted);margin-bottom:1.1rem}
+.work-body p{color:var(--muted);margin-bottom:1.1rem;max-width:62ch}
 .work-body p strong{color:var(--text);font-weight:500}
 .stack{
   display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;list-style:none;padding:0;margin:0;
@@ -475,7 +475,7 @@ section{padding:6.5rem 0;position:relative}
   letter-spacing:.16em;text-transform:uppercase;margin-bottom:.55rem;
 }
 .award-lead h3:not(.sub){font-size:clamp(1.3rem,2.8vw,1.75rem);margin-bottom:.7rem}
-.award-lead p{color:var(--muted);margin:0}
+.award-lead p{color:var(--muted);margin:0;max-width:62ch}
 .award-lead p strong{color:var(--text);font-weight:500}
 
 /* animated winner seal */
@@ -507,20 +507,21 @@ section{padding:6.5rem 0;position:relative}
   transition:transform .4s cubic-bezier(.2,.7,.3,1);
 }
 .award-list li:hover::before{transform:scaleY(1)}
-.award-list li:hover{padding-left:1rem}
-.award-list li:hover h4{color:var(--accent)}
+.award-list li:hover{transform:translateX(1rem)}
+.award-list li:hover h3.sub{color:var(--accent)}
 .award-list li:last-child{border-bottom:1px solid var(--rule)}
 @media(max-width:600px){.award-list li{grid-template-columns:1fr;gap:.3rem}}
 .award-list .place{
   font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em;
 }
-.award-list h4{transition:color .3s ease}
+.award-list h3.sub{transition:color .3s ease}
 /* stagger the entrance */
 .award-list li.reveal{transition-delay:0s}
 .award-list li:nth-child(2).reveal{transition-delay:.09s}
 .award-list li:nth-child(3).reveal{transition-delay:.18s}
 .award-list li:nth-child(4).reveal{transition-delay:.27s}
-.award-list h4{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:.25rem}
+.award-list h3.sub{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:.25rem}
+.award-list li p{max-width:62ch}
 .award-list p{font-size:.9rem;color:var(--muted);margin:0}
 
 /* ================= Timeline / roles ================= */
@@ -532,9 +533,9 @@ section{padding:6.5rem 0;position:relative}
 .roles li:last-child{border-bottom:1px solid var(--rule)}
 @media(max-width:640px){.roles li{grid-template-columns:1fr;gap:.35rem}}
 .roles .when{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.06em;padding-top:.3rem}
-.roles h4{font-size:1.08rem;font-family:var(--sans);font-weight:600;margin-bottom:.2rem}
+.roles h3.sub{font-size:1.08rem;font-family:var(--sans);font-weight:600;margin-bottom:.2rem}
 .roles .org{color:var(--accent);font-size:.9rem;margin-bottom:.5rem}
-.roles p{font-size:.93rem;color:var(--muted);margin:0}
+.roles p{font-size:.93rem;color:var(--muted);margin:0;max-width:62ch}
 
 
 /* ---- live TwinOps panel ------------------------------------------------- */
@@ -555,7 +556,7 @@ section{padding:6.5rem 0;position:relative}
   color:var(--muted);
 }
 .live-readout b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
-.live-caption{font-size:.86rem;color:var(--muted);opacity:.85}
+.live-caption{font-size:.86rem;color:var(--muted)}
 .work-links{display:flex;gap:1.4rem;margin-top:1.1rem}
 .work-links a{
   font-family:var(--mono);font-size:.78rem;color:var(--accent);
@@ -569,7 +570,7 @@ section{padding:6.5rem 0;position:relative}
   font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent);margin-bottom:.9rem;font-weight:500;
 }
-.skill-cols p{color:var(--muted);font-size:.94rem;margin:0;line-height:1.75}
+.skill-cols p{color:var(--muted);font-size:.94rem;margin:0;line-height:1.75;max-width:58ch}
 
 /* ================= Stats ================= */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;margin-top:3rem}

@@ -106,7 +106,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* ================= Tokens ================= */
@@ -118,11 +118,14 @@
   --muted:#9C9285;
   --accent:#E07A3F;
   --accent-soft:rgba(224,122,63,.14);
+  /* white text needs 4.5:1; the display orange only reaches 3.0:1, so
+     surfaces that carry white text use this darker cousin instead */
+  --accent-deep:#8F3E10;
   --rule:rgba(237,231,221,.13);
   --shadow:rgba(0,0,0,.45);
   --grid:rgba(237,231,221,.045);
-  --serif:'Fraunces',Georgia,serif;
-  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Archivo',system-ui,-apple-system,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --measure:64ch;
 }
@@ -134,6 +137,7 @@
   --muted:#6A6055;
   --accent:#B8511B;
   --accent-soft:rgba(184,81,27,.10);
+  --accent-deep:#8A3A12;
   --rule:rgba(26,22,19,.14);
   --shadow:rgba(60,45,30,.14);
   --grid:rgba(26,22,19,.05);
@@ -144,7 +148,7 @@ html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--ink);color:var(--text);
   font-family:var(--sans);font-size:17px;line-height:1.65;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
   transition:background .5s ease,color .5s ease;
 }
 img{max-width:100%;height:auto;display:block}
@@ -158,8 +162,7 @@ a{color:inherit}
 .blueprint{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(to right,var(--grid) 1px,transparent 1px),
-    linear-gradient(to bottom,var(--grid) 1px,transparent 1px);
+    none;
   background-size:72px 72px;
   -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 20%,transparent 72%);
   mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 20%,transparent 72%);
@@ -174,7 +177,7 @@ p{margin:0 0 1.1em}
 @media(max-width:640px){.wrap,.narrow{width:min(100% - 2rem,100%)}}
 
 /* ================= Skip link ================= */
-.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:.7rem 1.1rem;z-index:200;border-radius:0 0 6px 0}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent-deep);color:#fff;padding:.7rem 1.1rem;z-index:200;border-radius:0 0 6px 0}
 .skip:focus{left:0}
 
 /* ================= Nav ================= */
@@ -183,7 +186,7 @@ header.nav{
   padding:1.1rem 0;
   background:color-mix(in srgb,var(--ink) 86%,transparent);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;transition:border-color .3s ease,padding .3s ease;
+  border-bottom:1px solid transparent;transition:border-color .3s ease,transform .3s ease;
 }
 header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -227,7 +230,7 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:2.25rem}.hero{padding:7rem 0 2.5rem}}
 
 .kicker{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent);margin-bottom:1.1rem;display:block;
 }
 .hero h1{
@@ -249,8 +252,7 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
   content:'';position:absolute;inset:0;
   border:1px solid var(--rule);border-radius:2px;
   background:
-    linear-gradient(to right,var(--grid) 1px,transparent 1px) 0 0/18px 18px,
-    linear-gradient(to bottom,var(--grid) 1px,transparent 1px) 0 0/18px 18px;
+    none;
 }
 /* offset accent rule, like a registration mark */
 .hero-portrait::after{
@@ -300,15 +302,13 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 /* spec readout under the frame */
 .portrait-meta{
   display:flex;justify-content:space-between;gap:1rem;
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;
   color:var(--muted);opacity:.7;margin-top:.7rem;text-transform:uppercase;
 }
 .portrait-meta .live{color:var(--accent);display:inline-flex;align-items:center;gap:.35rem}
 .portrait-meta .live::before{
   content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);
-  animation:blip 1.9s ease-in-out infinite;
 }
-@keyframes blip{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.8)}}
 
 /* ---- Credentials strip: the proof, above the fold ---- */
 .creds{
@@ -337,8 +337,8 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
 /* ---- Affiliations ---- */
 .affil{margin-top:1.9rem;display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.5rem}
 .affil-label{
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);opacity:.75;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;
+  color:var(--muted);opacity:.8;
 }
 .affil-row{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem}
 .affil-row span{
@@ -354,7 +354,7 @@ header.nav.scrolled{border-bottom-color:var(--rule);padding:.75rem 0}
   font-size:.87rem;font-weight:500;letter-spacing:.01em;
   transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease;
 }
-.btn-solid{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.btn-solid{background:var(--accent-deep);color:#fff;border:1px solid var(--accent-deep)}
 .btn-solid:hover{transform:translateY(-2px);background:transparent;color:var(--accent)}
 .btn-ghost{border:1px solid var(--rule);color:var(--text)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
@@ -388,7 +388,7 @@ section{padding:6.5rem 0;position:relative}
 .pullquote{
   font-family:var(--serif);font-size:clamp(1.4rem,3.2vw,2.05rem);
   line-height:1.32;color:var(--text);font-style:italic;
-  border-left:2px solid var(--accent);padding-left:1.8rem;margin:3rem 0;
+  border-left:1px solid var(--rule);padding-left:1.8rem;margin:3rem 0;
   max-width:24ch;
 }
 
@@ -429,7 +429,7 @@ section{padding:6.5rem 0;position:relative}
   .work-item{grid-template-columns:1fr;gap:1.8rem;padding:2.4rem 0}
   .work-item.flip .work-media{order:0}
 }
-.work-media{overflow:hidden;border-radius:3px;background:var(--surface-2)}
+.work-media{overflow:hidden;border-radius:3px;background:var(--surface-2);padding:12px}
 .work-media img{
   width:100%;aspect-ratio:16/10;object-fit:cover;
   transition:transform .8s cubic-bezier(.2,.7,.3,1);
@@ -445,7 +445,7 @@ section{padding:6.5rem 0;position:relative}
 .art-label{font-family:var(--mono);font-size:11px;fill:var(--muted);letter-spacing:.14em}
 
 .work-tag{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent);display:block;margin-bottom:.9rem;
 }
 .work-body h3{font-size:clamp(1.4rem,2.6vw,1.85rem);margin-bottom:.85rem}
@@ -453,7 +453,7 @@ section{padding:6.5rem 0;position:relative}
 .work-body p strong{color:var(--text);font-weight:500}
 .stack{
   display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;list-style:none;padding:0;margin:0;
-  font-family:var(--mono);font-size:.73rem;color:var(--muted);
+  font-family:var(--mono);font-size:.82rem;color:var(--muted);
 }
 .stack li{position:relative}
 .stack li:not(:last-child)::after{content:'';position:absolute;right:-.65rem;top:50%;width:3px;height:3px;background:var(--rule);border-radius:50%}
@@ -467,14 +467,14 @@ section{padding:6.5rem 0;position:relative}
 .award-lead{
   display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:start;
   padding:2rem;background:var(--surface);border-radius:3px;
-  border-left:2px solid var(--accent);margin-bottom:2.6rem;
+  border-left:1px solid var(--rule);margin-bottom:2.6rem;
 }
 @media(max-width:600px){.award-lead{grid-template-columns:1fr;padding:1.5rem}}
 .award-lead .yr{
   display:block;font-family:var(--mono);font-size:.7rem;color:var(--accent);
   letter-spacing:.16em;text-transform:uppercase;margin-bottom:.55rem;
 }
-.award-lead h3{font-size:clamp(1.3rem,2.8vw,1.75rem);margin-bottom:.7rem}
+.award-lead h3:not(.sub){font-size:clamp(1.3rem,2.8vw,1.75rem);margin-bottom:.7rem}
 .award-lead p{color:var(--muted);margin:0}
 .award-lead p strong{color:var(--text);font-weight:500}
 
@@ -498,7 +498,7 @@ section{padding:6.5rem 0;position:relative}
   display:grid;grid-template-columns:5.5rem 1fr;gap:1.4rem;
   padding:1.25rem 0 1.25rem 0;border-top:1px solid var(--rule);align-items:baseline;
   position:relative;
-  transition:padding-left .4s cubic-bezier(.2,.7,.3,1);
+  transition:transform .4s cubic-bezier(.2,.7,.3,1);
 }
 /* accent bar that grows from the left on hover */
 .award-list li::before{
@@ -536,9 +536,36 @@ section{padding:6.5rem 0;position:relative}
 .roles .org{color:var(--accent);font-size:.9rem;margin-bottom:.5rem}
 .roles p{font-size:.93rem;color:var(--muted);margin:0}
 
+
+/* ---- live TwinOps panel ------------------------------------------------- */
+.work-live{position:relative;padding:0;background:var(--surface-2)}
+.work-live svg{display:block;width:100%;height:auto}
+.tl-card{fill:var(--surface);stroke:var(--rule);stroke-width:1.3;transition:stroke .2s ease}
+.tl-card.busy{stroke:var(--accent)}
+.tl-card.limit{stroke:var(--accent);stroke-width:2.2}
+.tl-label{font-family:var(--mono);font-size:8.5px;fill:var(--muted)}
+.tl-name{font-family:var(--sans);font-size:9.5px;font-weight:600;fill:var(--text)}
+.tl-shell{fill:var(--surface);stroke:var(--rule);stroke-width:1.3}
+.tl-fill{fill:var(--accent);opacity:.28;transition:opacity .2s ease}
+.tl-fill.full{opacity:.6}
+.tl-part{fill:var(--accent)}
+.live-readout{
+  display:flex;justify-content:space-between;gap:1rem;padding:.55rem .85rem;
+  border-top:1px solid var(--rule);font-family:var(--mono);font-size:.75rem;
+  color:var(--muted);
+}
+.live-readout b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
+.live-caption{font-size:.86rem;color:var(--muted);opacity:.85}
+.work-links{display:flex;gap:1.4rem;margin-top:1.1rem}
+.work-links a{
+  font-family:var(--mono);font-size:.78rem;color:var(--accent);
+  text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s ease;
+}
+.work-links a:hover{border-bottom-color:var(--accent)}
+
 /* ================= Skills prose ================= */
 .skill-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.2rem;margin-top:2.5rem}
-.skill-cols h4{
+.skill-cols h3.sub{
   font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent);margin-bottom:.9rem;font-weight:500;
 }
@@ -589,7 +616,8 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 .reveal.in{opacity:1;transform:none}
 
 /* ================= Progress ================= */
-#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:110;transition:width .1s linear}
+#prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);z-index:110;
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
@@ -632,10 +660,9 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <div class="hero wrap">
   <div class="hero-grid">
     <div>
-      <span class="kicker">Coimbatore, India</span>
       <h1>I understand the problem <br>before I write <em>a single line.</em></h1>
       <p class="lede">
-        I'm <strong>Jayaragul</strong> — an AI engineer and builder. I work on
+        I'm <strong>Jayaragul</strong>, an AI engineer and builder in Coimbatore, India. I work on
         <strong>LLMs, agentic systems and full-stack products</strong>, and I've learned that the
         hard part is almost never the code. It's knowing what you're actually solving.
       </p>
@@ -706,7 +733,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 01 Story ============ -->
 <section id="story" class="wrap">
   <div class="chapter reveal">
-    <span class="num">01</span>
     <h2>The <em>instinct</em></h2>
   </div>
 
@@ -715,7 +741,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       Most people jump straight into building. I don't.
     </p>
     <p>
-      I start by asking a different set of questions — the ones that decide whether the thing
+      I start by asking a different set of questions: the ones that decide whether the thing
       you build will actually matter:
     </p>
 
@@ -727,7 +753,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     </ul>
 
     <p>
-      That instinct — <strong>to understand before acting</strong> — is the lens through which I
+      That instinct, <strong>to understand before acting</strong>, is the lens through which I
       approach everything I build.
     </p>
   </div>
@@ -738,15 +764,13 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 
   <div class="story reveal">
     <p>
-      Beyond engineering, I enjoy research, reading papers, and experimenting with new ideas —
-      constantly exploring how systems work under the hood and trying concepts out in real
+      Beyond engineering, I enjoy research, reading papers, and experimenting with new ideas, constantly exploring how systems work under the hood and trying concepts out in real
       implementations. That's how I ended up training a language model from scratch rather than
       just calling one through an API.
     </p>
     <p>
       I also work across the full development lifecycle, from development to deployment. And
-      beyond code, I've competed in hackathons, led ideation sessions, and organised tech events —
-      experiences that sharpened not just my problem solving, but my ability to collaborate,
+      beyond code, I've competed in hackathons, led ideation sessions, and organised tech events. Those sharpened not just my problem solving, but my ability to collaborate,
       communicate, and move fast with a team.
     </p>
   </div>
@@ -763,7 +787,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 02 Craft ============ -->
 <section id="craft" class="wrap">
   <div class="chapter reveal">
-    <span class="num">02</span>
     <h2>How I <em>build</em></h2>
   </div>
 
@@ -782,19 +805,19 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 
   <div class="skill-cols reveal">
     <div>
-      <h4>Foundations</h4>
+      <h3 class="sub">Foundations</h3>
       <p>Python · SQL · Git · JavaScript · HTML &amp; CSS</p>
     </div>
     <div>
-      <h4>Backend &amp; Full stack</h4>
+      <h3 class="sub">Backend &amp; Full stack</h3>
       <p>Django · Flask · REST APIs · MySQL · MongoDB · Firebase</p>
     </div>
     <div>
-      <h4>Intelligence</h4>
+      <h3 class="sub">Intelligence</h3>
       <p>LLMs &amp; fine-tuning · Agentic AI · Machine learning · Deep learning · NLP · OpenCV · Data science</p>
     </div>
     <div>
-      <h4>Shipping</h4>
+      <h3 class="sub">Shipping</h3>
       <p>Google Cloud · Deployment · Linux RTOS · Motion profiling · Version control</p>
     </div>
   </div>
@@ -810,7 +833,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 03 Work ============ -->
 <section id="work" class="wrap">
   <div class="chapter reveal">
-    <span class="num">03</span>
     <h2>Selected <em>work</em></h2>
   </div>
 
@@ -820,6 +842,51 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       question about the framework.
     </p>
   </div>
+
+  <!-- TwinOps: the widget below is the real engine, not a recording -->
+  <article class="work-item reveal">
+    <div class="work-media work-live">
+      <svg id="twinline" viewBox="0 0 340 210" role="img"
+           aria-label="A live simulation of a production line: parts flow through two fast machines into a slower inspection station, where a queue builds up">
+        <g id="tl-edges" stroke="var(--rule)" stroke-width="1.4" fill="none"></g>
+        <g id="tl-parts"></g>
+        <g id="tl-nodes"></g>
+      </svg>
+      <div class="live-readout">
+        <span><b id="tl-out">0</b> shipped</span>
+        <span id="tl-note">warming up</span>
+      </div>
+    </div>
+    <div class="work-body">
+      <span class="work-tag">Operations research</span>
+      <h3>A factory that tells you what's wrong with it</h3>
+      <p>
+        Factory simulators cost more than the machine you're deciding whether to buy.
+        <strong>TwinOps</strong> is a free one that runs in a browser tab: describe a line in
+        plain English, press play, and watch which station is actually limiting output.
+      </p>
+      <p>
+        The hard part wasn't the animation. It was measuring <strong>blocked</strong> and
+        <strong>starved</strong> time as first-class state, because that's what lets it
+        <em>name</em> your bottleneck instead of handing you utilisation numbers to
+        interpret. Then it re-runs your line with each fix applied, so you get a decision
+        rather than a diagnosis.
+      </p>
+      <p class="live-caption">
+        That panel is the actual discrete-event engine running in this page, seeded fresh
+        each visit. Watch the queue fill in front of the slow station.
+      </p>
+      <ul class="stack">
+        <li>Discrete-event simulation</li>
+        <li>Python</li>
+        <li>Zero-dependency JS</li>
+      </ul>
+      <p class="work-links">
+        <a href="https://jayaragul.github.io/twinops/" target="_blank" rel="noopener">Open the studio</a>
+        <a href="https://github.com/Jayaragul/twinops" target="_blank" rel="noopener">Source</a>
+      </p>
+    </div>
+  </article>
 
   <!-- SLM from scratch -->
   <article class="work-item reveal">
@@ -841,14 +908,14 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       <span class="work-tag">Language models</span>
       <h3>A language model, built from scratch</h3>
       <p>
-        Everyone can call an LLM API. I wanted to know what was actually happening inside one — so
+        Everyone can call an LLM API. I wanted to know what was actually happening inside one, so
         I built and trained a <strong>27-million-parameter model from the ground up</strong> on the
         TinyStories dataset. Tokenizer, transformer blocks, training loop, text generation: all of
         it, by hand.
       </p>
       <p>
         Working at that scale forces you to understand every decision, because there's nowhere for
-        a mistake to hide. It changed how I read papers — and how I debug models I didn't write.
+        a mistake to hide. It changed how I read papers, and how I debug models I didn't write.
       </p>
       <ul class="stack">
         <li>PyTorch</li><li>Transformer architecture</li><li>Tokenization</li><li>TinyStories</li>
@@ -866,7 +933,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       <h3>Telling a drone from a bird</h3>
       <p>
         Radar sees a small moving object. Is it a drone or a bird? The answer lives in the
-        <strong>micro-Doppler signature</strong> — the tiny frequency shifts created by spinning
+        <strong>micro-Doppler signature</strong>: the tiny frequency shifts created by spinning
         rotors versus beating wings.
       </p>
       <p>
@@ -889,7 +956,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       <h3>Motion that doesn't jerk</h3>
       <p>
         A robotic arm that simply moves to a position will slam into it. Smooth motion needs
-        <strong>motion profiling</strong> — planned acceleration and deceleration curves, running
+        <strong>motion profiling</strong>: planned acceleration and deceleration curves, running
         under real-time constraints on Linux RTOS.
       </p>
       <p>
@@ -912,7 +979,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
       <h3>Reading symptoms like a clinician would</h3>
       <p>
         An NLP system that maps described symptoms to likely conditions and suggested treatment.
-        The domain mattered far more than the architecture here — medical language is full of
+        The domain mattered far more than the architecture here. Medical language is full of
         overlap, negation and hedging that a naive model reads exactly backwards.
       </p>
       <p>
@@ -927,15 +994,15 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 
   <div class="also reveal">
     <div class="also-item">
-      <h4>Attendance, automated</h4>
+      <h3 class="sub">Attendance, automated</h3>
       <p>Camera-based attendance using face recognition with OpenCV, served through Flask.</p>
     </div>
     <div class="also-item">
-      <h4>Fine-tuning on private data</h4>
+      <h3 class="sub">Fine-tuning on private data</h3>
       <p>Adapting a compact language model to domain-specific data, so it works where a general API can't.</p>
     </div>
     <div class="also-item">
-      <h4>Open source</h4>
+      <h3 class="sub">Open source</h3>
       <p>Contributions to machine learning and web development repositories.</p>
     </div>
   </div>
@@ -944,7 +1011,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 04 Recognition ============ -->
 <section id="recognition" class="wrap">
   <div class="chapter reveal">
-    <span class="num">04</span>
     <h2>Recognition</h2>
   </div>
 
@@ -978,28 +1044,28 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li class="reveal">
       <span class="place">Top 5</span>
       <div>
-        <h4>GenAI Hackathon — ML.CBE 2025</h4>
+        <h3 class="sub">GenAI Hackathon — ML.CBE 2025</h3>
         <p>Selected among the top 5 teams from 70+ registered, for a FinTech intelligence solution built with AI and ML.</p>
       </div>
     </li>
     <li class="reveal">
       <span class="place">1st place</span>
       <div>
-        <h4>Paper Presentation — RVS College of Engineering &amp; Technology</h4>
+        <h3 class="sub">Paper Presentation — RVS College of Engineering &amp; Technology</h3>
         <p>An AI-based healthcare project. 2025.</p>
       </div>
     </li>
     <li class="reveal">
       <span class="place">1st place</span>
       <div>
-        <h4>Paper Presentation — P.A. College of Engineering &amp; Technology</h4>
+        <h3 class="sub">Paper Presentation — P.A. College of Engineering &amp; Technology</h3>
         <p>Machine learning and medical algorithms. 2024.</p>
       </div>
     </li>
     <li class="reveal">
       <span class="place">1st place</span>
       <div>
-        <h4>Idethon at Varnam — Karpagam College of Engineering &amp; Technology</h4>
+        <h3 class="sub">Idethon at Varnam — Karpagam College of Engineering &amp; Technology</h3>
         <p>2025.</p>
       </div>
     </li>
@@ -1009,14 +1075,13 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 05 Beyond code ============ -->
 <section id="beyond" class="wrap">
   <div class="chapter reveal">
-    <span class="num">05</span>
     <h2>Beyond the <em>code</em></h2>
   </div>
 
   <div class="story reveal">
     <p>
       I'm currently building in the AI space, scaling real products, and working toward becoming a
-      recognised voice in the developer community. A lot of that happens away from the editor —
+      recognised voice in the developer community. A lot of that happens away from the editor:
       teaching, organising, and getting people into the same room.
     </p>
   </div>
@@ -1025,7 +1090,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">2026 — Present</span>
       <div>
-        <h4>AI Engineer</h4>
+        <h3 class="sub">AI Engineer</h3>
         <p class="org">Genorai · Coimbatore</p>
         <p>Building agentic automation workflows and generative AI solutions deployed on Google Cloud, across the full lifecycle from prototype to production.</p>
       </div>
@@ -1033,7 +1098,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">2025 — 2026</span>
       <div>
-        <h4>Vice President</h4>
+        <h3 class="sub">Vice President</h3>
         <p class="org">The Exypnos — AI &amp; Data Science Department</p>
         <p>Driving community growth through hackathons, tech talks and workshops. Previously Tech Lead, 2024–2025.</p>
       </div>
@@ -1041,7 +1106,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">2025</span>
       <div>
-        <h4>Google Student Ambassador</h4>
+        <h3 class="sub">Google Student Ambassador</h3>
         <p class="org">Google for Developers</p>
         <p>Ran a hands-on Large Language Models workshop helping students build real AI applications, alongside community events and Google technology sessions.</p>
       </div>
@@ -1049,7 +1114,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">2026</span>
       <div>
-        <h4>Workshop speaker — "Into the LLM", KALAM 2026</h4>
+        <h3 class="sub">Workshop speaker — "Into the LLM", KALAM 2026</h3>
         <p class="org">Inter-collegiate techno-cultural fest</p>
         <p>Live demonstrations on agentic AI and LLM fine-tuning for students exploring how modern AI applications are actually built.</p>
       </div>
@@ -1057,7 +1122,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">Ongoing</span>
       <div>
-        <h4>Community builder &amp; hackathon organiser</h4>
+        <h3 class="sub">Community builder &amp; hackathon organiser</h3>
         <p class="org">CBE DEVS · Hack Forge</p>
         <p>Helped grow a Coimbatore developer community from 12 to 284 members across South India. Coordinated an inter-college AI/ML hackathon, working directly with industry jury members.</p>
       </div>
@@ -1065,7 +1130,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
     <li>
       <span class="when">2025 — 2026</span>
       <div>
-        <h4>Student member</h4>
+        <h3 class="sub">Student member</h3>
         <p class="org">IEEE</p>
         <p>Technical workshops, conferences and collaborative projects across AI and computing. Attended NVIDIA's India Agentic AI workshop in Bengaluru and Google's Build with AI bootcamp.</p>
       </div>
@@ -1076,7 +1141,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ 06 Writing ============ -->
 <section id="writing" class="wrap">
   <div class="chapter reveal">
-    <span class="num">06</span>
     <h2>Writing</h2>
   </div>
 
@@ -1098,7 +1162,6 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
 <!-- ============ Contact ============ -->
 <section id="contact" class="wrap">
   <div class="chapter reveal">
-    <span class="num">07</span>
     <h2>Let's <em>connect</em></h2>
   </div>
 
@@ -1248,7 +1311,7 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
   function onScroll(){
     var el = document.documentElement;
     var max = el.scrollHeight - el.clientHeight;
-    prog.style.width = (max > 0 ? (el.scrollTop / max) * 100 : 0) + '%';
+    prog.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
     nav.classList.toggle('scrolled', el.scrollTop > 20);
     ticking = false;
   }
@@ -1333,6 +1396,187 @@ footer{padding:3.5rem 0;border-top:1px solid var(--rule)}
   /* =========================================================
      Particle field — drifting "electrons" that scatter from the cursor
      ========================================================= */
+
+  /* ---- live production line -------------------------------------------
+     A real (small) discrete-event simulation, not a canned loop. Same model
+     as TwinOps: stations pull work, block when the next buffer is full, and
+     starve when theirs is empty. Inspect is deliberately the slowest step, so
+     the queue in front of it fills and the constraint reveals itself.
+     The motion is honest: what moves is genuinely being computed. */
+  (function livingLine(){
+    var svg = document.getElementById('twinline');
+    if(!svg) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var NS = 'http://www.w3.org/2000/svg';
+    function mk(t, a, parent){
+      var e = document.createElementNS(NS, t);
+      for(var k in a) e.setAttribute(k, a[k]);
+      if(parent) parent.appendChild(e);
+      return e;
+    }
+
+    var W = 62, H = 34, BW = 22, BH = 62;
+    var stations = [
+      {id:'cut',  name:'Process 1', x:96,  y:34,  cycle:2.2},
+      {id:'cut2', name:'Process 2', x:96,  y:126, cycle:2.2},
+      {id:'insp', name:'Inspect', x:232, y:80,  cycle:3.4}
+    ];
+    var buffers = [
+      {id:'feed',  x:44,  y:74, cap:6},
+      {id:'queue', x:186, y:74, cap:8}
+    ];
+
+    var edges = document.getElementById('tl-edges');
+    function link(x1,y1,x2,y2){
+      var mx = (x1+x2)/2;
+      mk('path', {d:'M'+x1+','+y1+' C'+mx+','+y1+' '+mx+','+y2+' '+x2+','+y2}, edges);
+    }
+    link(30,105, 44,105);
+    link(44+BW,105, 96,51);
+    link(44+BW,105, 96,143);
+    link(96+W,51, 186,105);
+    link(96+W,143, 186,105);
+    link(186+BW,105, 232,97);
+    link(232+W,97, 312,97);
+
+    var nodeLayer = document.getElementById('tl-nodes');
+    var partLayer = document.getElementById('tl-parts');
+    var els = {};
+
+    buffers.forEach(function(b){
+      var g = mk('g', {transform:'translate('+b.x+','+b.y+')'}, nodeLayer);
+      mk('rect', {'class':'tl-shell', width:BW, height:BH, rx:3}, g);
+      var fill = mk('rect', {'class':'tl-fill', x:1.5, width:BW-3, y:BH-1.5, height:0}, g);
+      els[b.id] = {fill:fill, b:b, items:0};
+    });
+
+    stations.forEach(function(st){
+      var g = mk('g', {transform:'translate('+st.x+','+st.y+')'}, nodeLayer);
+      var card = mk('rect', {'class':'tl-card', width:W, height:H, rx:5}, g);
+      mk('text', {'class':'tl-name', x:9, y:15}, g).textContent = st.name;
+      var status = mk('text', {'class':'tl-label', x:9, y:26}, g);
+      els[st.id] = {card:card, status:status, st:st, busy:false, blocked:false, remaining:0};
+    });
+
+    var srcG = mk('g', {transform:'translate(6,90)'}, nodeLayer);
+    mk('text', {'class':'tl-label', x:0, y:12}, srcG).textContent = 'IN';
+    var outG = mk('g', {transform:'translate(316,90)'}, nodeLayer);
+    mk('text', {'class':'tl-label', x:0, y:12}, outG).textContent = 'OUT';
+
+    var t = 0, shipped = 0, nextArrival = 0.6, running = false, lastTs = null;
+    var flying = [];
+    var outEl = document.getElementById('tl-out');
+    var noteEl = document.getElementById('tl-note');
+
+    function paintBuffer(id){
+      var b = els[id], frac = b.items / b.b.cap, h = frac * (BH - 3);
+      b.fill.setAttribute('y', BH - 1.5 - h);
+      b.fill.setAttribute('height', h);
+      b.fill.classList.toggle('full', b.items >= b.b.cap);
+    }
+    function push(id){
+      var b = els[id];
+      if(b.items >= b.b.cap) return false;
+      b.items++; paintBuffer(id); return true;
+    }
+    function pop(id){
+      var b = els[id];
+      if(b.items <= 0) return false;
+      b.items--; paintBuffer(id); return true;
+    }
+    function fly(x1,y1,x2,y2,dur){
+      if(reduced || flying.length > 40) return;
+      var dot = mk('circle', {'class':'tl-part', r:2.6, cx:x1, cy:y1}, partLayer);
+      flying.push({el:dot, x1:x1, y1:y1, x2:x2, y2:y2, t:0, dur:dur});
+    }
+
+    function step(dt){
+      t += dt;
+      nextArrival -= dt;
+      if(nextArrival <= 0){
+        nextArrival = 0.55 + Math.random() * 0.5;
+        if(push('feed')) fly(30, 105, 44, 105, 0.3);
+      }
+
+      stations.forEach(function(st){
+        var e = els[st.id];
+        var inBuf  = (st.id === 'insp') ? 'queue' : 'feed';
+        var outBuf = (st.id === 'insp') ? null    : 'queue';
+
+        if(e.busy){
+          e.remaining -= dt;
+          if(e.remaining <= 0){
+            if(outBuf){
+              if(push(outBuf)){
+                e.busy = false; e.blocked = false;
+                fly(st.x + W, st.y + H / 2, 186, 105, 0.4);
+              } else {
+                e.blocked = true;
+              }
+            } else {
+              e.busy = false; e.blocked = false; shipped++;
+              fly(st.x + W, st.y + H / 2, 312, 97, 0.45);
+            }
+          }
+        }
+        if(!e.busy && pop(inBuf)){
+          e.busy = true; e.blocked = false;
+          e.remaining = st.cycle * (0.85 + Math.random() * 0.3);
+        }
+
+        var state = e.blocked ? 'BLOCKED'
+                  : e.busy   ? 'RUNNING'
+                  : (els[inBuf].items === 0 ? 'WAITING' : 'IDLE');
+        if(e.status.textContent !== state) e.status.textContent = state;
+        e.card.classList.toggle('busy', e.busy && !e.blocked);
+      });
+
+      if(outEl) outEl.textContent = shipped;
+      if(noteEl){
+        var q = els.queue.items, cap = els.queue.b.cap;
+        var msg = q >= cap ? 'queue full — Inspect is the limit'
+                : q >= cap * 0.6 ? 'queue building at Inspect'
+                : 'running';
+        if(noteEl.textContent !== msg) noteEl.textContent = msg;
+      }
+    }
+
+    function frame(ts){
+      if(!running) return;
+      if(lastTs === null) lastTs = ts;
+      var dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+      step(dt);
+      for(var i = flying.length - 1; i >= 0; i--){
+        var f = flying[i];
+        f.t += dt;
+        var k = Math.min(1, f.t / f.dur);
+        f.el.setAttribute('cx', f.x1 + (f.x2 - f.x1) * k);
+        f.el.setAttribute('cy', f.y1 + (f.y2 - f.y1) * k);
+        if(k >= 1){ f.el.remove(); flying.splice(i, 1); }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    els.insp.card.classList.add('limit');
+
+    if(reduced){
+      for(var i = 0; i < 600; i++) step(0.05);
+      return;
+    }
+
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && !running){
+          running = true; lastTs = null; requestAnimationFrame(frame);
+        } else if(!en.isIntersecting){
+          running = false;
+        }
+      });
+    }, {threshold: 0.15}).observe(svg);
+  })();
+
   (function particleField(){
     var canvas = document.getElementById('fx');
     if(!canvas) return;

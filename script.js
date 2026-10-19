@@ -1,0 +1,10 @@
+const nav=document.querySelector('#nav');const menu=document.querySelector('#menu');const links=document.querySelector('#navLinks');const progress=document.querySelector('#progress');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>18);const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${max>0?scrollY/max:0})`},{passive:true});
+menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'Close':'Menu';document.body.classList.toggle('menu-open',open)});
+links.addEventListener('click',e=>{if(e.target.tagName==='A'){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu';document.body.classList.remove('menu-open')}});
+window.addEventListener('resize',()=>{if(innerWidth>840){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu';document.body.classList.remove('menu-open')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu';document.body.classList.remove('menu-open');menu.focus()}});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelector('#year').textContent=new Date().getFullYear();
+window.addEventListener('pointermove',e=>{document.documentElement.style.setProperty('--mx',`${e.clientX}px`);document.documentElement.style.setProperty('--my',`${e.clientY}px`)},{passive:true});

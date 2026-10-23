@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Explore Jayaragul N’s agentic engineering work: AI agents, guarded tool calling, context engineering and behavioral evaluations in a factory copilot.">
+  <meta name="author" content="Jayaragul N">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/agentic-engineering.html">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jayaragul N">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image:alt" content="Jayaragul N, AI and agentic engineer">
+  <meta name="twitter:image:alt" content="Jayaragul N, AI and agentic engineer">
+  <meta property="og:title" content="Agentic Engineering &amp; AI Agents | Jayaragul N">
+  <meta property="og:description" content="Explore Jayaragul N’s AI agents, language models and engineering projects. Based in Coimbatore, India.">
+  <meta property="og:url" content="https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/agentic-engineering.html">
+  <meta property="og:image" content="https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/headshot.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agentic Engineering &amp; AI Agents | Jayaragul N">
+  <meta name="twitter:description" content="AI agents, language models and full-stack engineering by Jayaragul N in Coimbatore, India.">
+  <meta name="twitter:image" content="https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/headshot.png">
+  <title>Agentic Engineering &amp; AI Agents | Jayaragul N</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=njr-education">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Agentic engineering: from a request to a reliable action", "url": "https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/agentic-engineering.html", "author": {"@type": "Person", "@id": "https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/#person", "name": "Jayaragul N", "alternateName": "Jayaragul", "url": "https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/", "image": "https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/headshot.png", "jobTitle": "AI Engineer", "description": "AI and agentic engineer building language models, tool-using agents and full-stack products in Coimbatore, India.", "email": "mailto:jayaragul.in@gmail.com", "homeLocation": {"@type": "Place", "name": "Coimbatore, Tamil Nadu, India"}, "worksFor": {"@type": "Organization", "name": "Genorai"}, "sameAs": ["https://github.com/jayaragul", "https://www.linkedin.com/in/jayaragul-n/", "https://medium.com/@jayaragul"], "knowsAbout": ["Agentic AI", "AI agents", "Agent orchestration", "Tool calling", "Context engineering", "LLM evaluations", "Large language models", "Machine learning", "Full-stack development"]}, "about": ["Agentic engineering", "AI agents", "Tool calling", "Evaluations"], "mainEntityOfPage": "https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/agentic-engineering.html"}</script>
+</head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="shell nav-inner"><a class="mark" href="./">NJR<span>.</span><small>JAYARAGUL N</small></a><a class="back-link" href="./#work">← Back to selected work</a></div></header>
+<main id="main" class="article-page shell">
+  <p class="eyebrow">Engineering notes / Jayaragul N</p>
+  <h1>Agentic engineering.<br><em>From request to action.</em></h1>
+  <p class="article-intro">Building an AI agent means designing the system around the model: the context it sees, the tools it can call, the actions it must refuse, and the evidence that it works.</p>
+  <p>I'm Jayaragul N, an AI engineer at Genorai in Coimbatore, India. I work on agentic automation and generative AI. This page walks through the engineering decisions in my public <a href="https://github.com/Jayaragul/AGENT-HARNESS">Agent Harness project</a>, a factory AI copilot built from scratch.</p>
+  <figure><img src="assets/agent-harness.png" width="1536" height="1024" alt="Agent Harness architecture: request planning, validation, deterministic factory tools and inspectable answer traces"><figcaption>Agent Harness / a factory AI copilot with explicit execution boundaries.</figcaption></figure>
+  <section><p class="eyebrow">01 / The problem</p><h2>A useful answer needs reliable business facts.</h2><p>A factory request can involve inventory, machine requirements or operational risk. A language model can interpret the question, but the business facts need to come from tools and domain logic. In Agent Harness, natural-language requests become guarded, validated tool calls rather than unsupported answers.</p></section>
+  <section><p class="eyebrow">02 / The architecture</p><h2>Separate interpretation from execution.</h2><div class="engineering-steps">
+    <article><span>01</span><h3>Context &amp; planning</h3><p>Give the model the request, relevant context and available tool definitions. Keep the task and execution boundaries explicit.</p></article>
+    <article><span>02</span><h3>Validated tool calls</h3><p>Check proposed actions and arguments before running deterministic factory tools for inventory, machines and risk.</p></article>
+    <article><span>03</span><h3>Inspectable results</h3><p>Make the tool results and execution trace available so an answer can be checked against what actually happened.</p></article>
+  </div></section>
+  <section><p class="eyebrow">03 / Reliability</p><h2>Evaluate the behavior, not just the answer.</h2><p>Agent Harness includes a behavioral evaluation harness to measure regressions. The questions extend beyond whether the final wording sounds right: did the agent select the appropriate tool, respect the execution boundary and use the returned facts?</p><p>Context engineering, memory, orchestration and guardrails are parts of the same system. An agent needs enough context to act usefully, and clear boundaries that keep its actions understandable.</p></section>
+  <section><p class="eyebrow">04 / Explore further</p><h2>Read the code. Follow the work.</h2><p>The repository is the place to inspect the implementation and its current state. My portfolio also includes a language model trained from scratch, an autonomous AI news pipeline and mathematical optimisation work.</p><div class="hero-actions"><a class="button primary" href="https://github.com/Jayaragul/AGENT-HARNESS">Explore Agent Harness ↗</a><a class="button text" href="./#work">More engineering projects ↗</a></div></section>
+  <aside class="article-author"><img src="headshot.png" width="64" height="64" alt="Jayaragul N"><div><strong>Jayaragul N</strong><p>AI &amp; agentic engineer · Coimbatore, India<br><a href="mailto:jayaragul.in@gmail.com">Get in touch ↗</a></p></div></aside>
+</main><footer><div class="shell"><span>© 2026 Jayaragul N</span><a href="./">Portfolio ↗</a><a href="https://www.linkedin.com/in/jayaragul-n/" rel="me">LinkedIn ↗</a></div></footer></body></html>

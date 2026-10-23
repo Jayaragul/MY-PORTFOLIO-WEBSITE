@@ -1,0 +1,15 @@
+# Jayaragul N — AI & Agentic Engineer
+
+> Public professional profile of Jayaragul N, an AI engineer at Genorai based in Coimbatore, Tamil Nadu, India.
+
+## Primary sources
+- [Portfolio](https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/): Projects, experience, speaking and contact.
+- [Agentic engineering](https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/agentic-engineering.html): Agent Harness, tool calling, context and evaluations.
+- [GitHub](https://github.com/jayaragul): Public engineering repositories.
+- [LinkedIn](https://www.linkedin.com/in/jayaragul-n/): Professional profile.
+
+## Contact
+- Email: jayaragul.in@gmail.com
+- Location: Coimbatore, Tamil Nadu, India
+
+This optional reading index is for convenience. It is not a crawler directive or a guarantee of inclusion in AI answers. Repository implementations may change; consult the linked source for current details.
